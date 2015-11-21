@@ -25,7 +25,6 @@ public class APCSObject implements Persistent {
 
     @Id
     @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
     @Column(name="id")
     public Long getId() {
         return id;
@@ -116,12 +115,23 @@ public class APCSObject implements Persistent {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof APCSObject)) {
-            return false;
-        }
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof APCSObject)) return false;
 
-        final APCSObject apcsObject = (APCSObject) obj;
-        return this.getId().equals(apcsObject.getId()) && this.getSymbol().equals(apcsObject.getSymbol());
+        APCSObject that = (APCSObject) o;
+
+        if (getSymbol() != null ? !getSymbol().equals(that.getSymbol()) : that.getSymbol() != null) return false;
+        if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
+        return !(getDirection() != null ? !getDirection().equals(that.getDirection()) : that.getDirection() != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getSymbol() != null ? getSymbol().hashCode() : 0;
+        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
+        result = 31 * result + (getDirection() != null ? getDirection().hashCode() : 0);
+        return result;
     }
 }

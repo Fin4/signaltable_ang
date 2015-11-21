@@ -23,7 +23,7 @@
       box-sizing: border-box;
     }
 
-    table {
+ /*   table {
       color: #333;
       font-family: sans-serif;
       font-size: .9em;
@@ -104,7 +104,7 @@
 
     .btn {
       padding: 3px 3px;
-    }
+    }*/
 
   </style>
 

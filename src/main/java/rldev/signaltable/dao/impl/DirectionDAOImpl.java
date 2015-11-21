@@ -47,10 +47,4 @@ public class DirectionDAOImpl extends AbstractDAO<Direction> implements Directio
         return getSessionFactory().createQuery("from rldev.signaltable.entity.Direction").list();
     }
 
-    public Direction getDirectionByName(String name) {
-        String hql = "from Direction as direction where direction.name = :name";
-        Query query = getSessionFactory().createQuery(hql);
-        query.setParameter("name", name);
-        return (Direction) query.uniqueResult();
-    }
 }

@@ -41,7 +41,6 @@ public class AppConfiguration {
         viewResolver.setPrefix("/WEB-INF/pages/");
         viewResolver.setSuffix(".jsp");
         return viewResolver;
-
     }
 
     @Bean

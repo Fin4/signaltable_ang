@@ -6,9 +6,11 @@ import java.util.List;
 
 public interface APCSObjectDAO extends GeneralDAO<APCSObject> {
 
-    APCSObject getApcsObjectBySymbol(String symbol);
+    APCSObject getByName(String name);
 
-    List<APCSObject> getAllObjectsByDirectionName(String name);
+    APCSObject getBySymbol(String symbol);
 
-    List<APCSObject> getAllObjectsByDirectionId(Long id);
+    List<APCSObject> getByDirectionName(String name);
+
+    List<APCSObject> getByDirectionId(Long id);
 }

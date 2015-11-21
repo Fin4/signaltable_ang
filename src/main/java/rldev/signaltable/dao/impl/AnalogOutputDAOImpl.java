@@ -16,27 +16,22 @@ public class AnalogOutputDAOImpl extends AbstractDAO<AnalogOutput> implements An
         getSessionFactory().save(persistent);
     }
 
-    
     public void deleteById(Long id) {
         getSessionFactory().delete(getById(id));
     }
 
-    
     public void update(AnalogOutput persistent) {
         getSessionFactory().update(persistent);
     }
 
-    
     public void delete(AnalogOutput persistent) {
         getSessionFactory().delete(persistent);
     }
 
-    
     public AnalogOutput getById(Long id) {
         return (AnalogOutput) getSessionFactory().get(AnalogOutput.class, id);
     }
 
-    
     @SuppressWarnings("unchecked")
     public List<AnalogOutput> getAll() {
         return getSessionFactory().createQuery("from rldev.signaltable.entity.AnalogOutput").list();
@@ -50,12 +45,10 @@ public class AnalogOutputDAOImpl extends AbstractDAO<AnalogOutput> implements An
         return query.list();
     }
 
-    
     public AnalogOutput getByName(String name) {
         return null;
     }
 
-    
     public AnalogOutput getBySymbol(String symbol) {
         String hql = "from rldev.signaltable.entity.AnalogOutput as ao where ao.symbol = :symbol";
         Query query = getSessionFactory().createQuery(hql);
@@ -63,7 +56,6 @@ public class AnalogOutputDAOImpl extends AbstractDAO<AnalogOutput> implements An
         return (AnalogOutput) query.uniqueResult();
     }
 
-    
     @SuppressWarnings("unchecked")
     public List<AnalogOutput> getByAPCSObjectName(String name) {
         String hql = "from rldev.signaltable.entity.AnalogOutput as ao where ao.apcsObject.name = :name";

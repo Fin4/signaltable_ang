@@ -16,7 +16,7 @@ public class Direction implements Persistent {
 
     @Id
     @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
+    //@GenericGenerator(name="increment", strategy = "increment")
     @Column(name="id")
     public Long getId() {
         return id;
@@ -47,5 +47,21 @@ public class Direction implements Persistent {
     @Override
     public String toString() {
         return id + " " + name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Direction)) return false;
+
+        Direction direction = (Direction) o;
+
+        return !(getName() != null ? !getName().equals(direction.getName()) : direction.getName() != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return getName() != null ? getName().hashCode() : 0;
     }
 }

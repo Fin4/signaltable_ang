@@ -1,7 +1,5 @@
 package rldev.signaltable.entity;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 
 @MappedSuperclass
@@ -15,7 +13,7 @@ public abstract class IOObject implements Persistent {
 
     @Id
     @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
+    //@GenericGenerator(name="increment", strategy = "increment")
     @Column(name = "id")
     public Long getId() {
         return id;
@@ -68,19 +66,22 @@ public abstract class IOObject implements Persistent {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || this.getClass() != obj.getClass()) return false;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof IOObject)) return false;
 
-        final IOObject ioObject = (IOObject) obj;
+        IOObject ioObject = (IOObject) o;
 
-        if (this.getId() != null ? !this.getId().equals(ioObject.getId()) : ioObject.getId() != null) return false;
+        if (getSymbol() != null ? !getSymbol().equals(ioObject.getSymbol()) : ioObject.getSymbol() != null)
+            return false;
+        return !(getApcsObject() != null ? !getApcsObject().equals(ioObject.getApcsObject()) : ioObject.getApcsObject() != null);
 
-        return true;
     }
 
     @Override
     public int hashCode() {
-        return getId() != null ? getId().hashCode() : super.hashCode();
+        int result = getSymbol() != null ? getSymbol().hashCode() : 0;
+        result = 31 * result + (getApcsObject() != null ? getApcsObject().hashCode() : 0);
+        return result;
     }
 }

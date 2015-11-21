@@ -11,38 +11,31 @@ import java.util.List;
 @Repository("analogInputDAO")
 public class AnalogInputDAOImpl extends AbstractDAO<AnalogInput> implements AnalogInputDAO {
 
-    @Override
     public void delete(AnalogInput persistent) {
         getSessionFactory().delete(persistent);
     }
 
-    @Override
     public void save(AnalogInput persistent) {
         getSessionFactory().save(persistent);
     }
 
-    @Override
     public void update(AnalogInput persistent) {
         getSessionFactory().update(persistent);
     }
 
-    @Override
     public void deleteById(Long id) {
         getSessionFactory().delete(getById(id));
     }
 
-    @Override
     public AnalogInput getById(Long id) {
         return (AnalogInput) getSessionFactory().get(AnalogInput.class, id);
     }
 
-    @Override
     @SuppressWarnings("unchecked")
     public List<AnalogInput> getAll() {
         return getSessionFactory().createQuery("from rldev.signaltable.entity.AnalogInput").list();
     }
 
-    @Override
     @SuppressWarnings("unchecked")
     public List<AnalogInput> getByAPCSObjectId(Long id) {
         String hql = "from rldev.signaltable.entity.AnalogInput as ai where ai.apcsObject.id = :id";
@@ -62,7 +55,6 @@ public class AnalogInputDAOImpl extends AbstractDAO<AnalogInput> implements Anal
         return (AnalogInput) query.uniqueResult();
     }
 
-    @Override
     @SuppressWarnings("unchecked")
     public List<AnalogInput> getByAPCSObjectName(String name) {
         String hql = "from rldev.signaltable.entity.AnalogInput as ai where ai.apcsObject.name = :name";
