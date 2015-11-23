@@ -14,9 +14,9 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/")
-public class APCSObjectController {
+public class ProcessControlObjectController {
 
-    @Autowired private APCSObjectService apcsObjectService;
+    @Autowired private ProcessControlObjectService processControlObjectService;
     @Autowired private DigitalInputService digitalInputService;
     @Autowired private DigitalOutputService digitalOutputService;
     @Autowired private AnalogInputService analogInputService;
@@ -24,22 +24,22 @@ public class APCSObjectController {
 
     @RequestMapping(value = {"/{dirName}"}, method = RequestMethod.GET)
     public String directionObjects(ModelMap modelMap, @PathVariable String dirName) {
-        List<APCSObject> apcsObjects = apcsObjectService.getByDirectionName(dirName);
-        modelMap.addAttribute("apcsObjects", apcsObjects);
-        return "signaltable/APCSObject/objs";
+        List<ProcessControlObject> processControlObjects = processControlObjectService.getByDirectionName(dirName);
+        modelMap.addAttribute("apcsObjects", processControlObjects);
+        return "signaltable/ProcessControlObject/objs";
     }
 
     /* ************************************************************Download excel************************************************************ */
     @RequestMapping(value = "/{objName}-downloadExcel", method = RequestMethod.GET)
     public ModelAndView downloadExcel(@PathVariable String objName) {
 
-        APCSObject apcsObject = apcsObjectService.getByName(objName);
+        ProcessControlObject processControlObject = processControlObjectService.getByName(objName);
 
-        apcsObject.setDigitalInputs(digitalInputService.getByAPCSObjectName(objName));
-        apcsObject.setAnalogInputs(analogInputService.getByAPCSObjectName(objName));
-        apcsObject.setDigitalOutputs(digitalOutputService.getByAPCSObjectName(objName));
-        apcsObject.setAnalogOutputs(analogOutputService.getByAPCSObjectName(objName));
+        processControlObject.setDigitalInputs(digitalInputService.getByAPCSObjectName(objName));
+        processControlObject.setAnalogInputs(analogInputService.getByAPCSObjectName(objName));
+        processControlObject.setDigitalOutputs(digitalOutputService.getByAPCSObjectName(objName));
+        processControlObject.setAnalogOutputs(analogOutputService.getByAPCSObjectName(objName));
 
-        return new ModelAndView("excelView", "apcsObject", apcsObject);
+        return new ModelAndView("excelView", "apcsObject", processControlObject);
     }
 }

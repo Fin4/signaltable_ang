@@ -7,9 +7,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import rldev.signaltable.entity.APCSObject;
+import rldev.signaltable.entity.ProcessControlObject;
 import rldev.signaltable.entity.AnalogOutput;
-import rldev.signaltable.service.APCSObjectService;
+import rldev.signaltable.service.ProcessControlObjectService;
 import rldev.signaltable.service.AnalogOutputService;
 
 import javax.validation.Valid;
@@ -23,7 +23,7 @@ public class AnalogOutputController {
     private AnalogOutputService analogOutputService;
 
     @Autowired
-    private APCSObjectService apcsObjectService;
+    private ProcessControlObjectService processControlObjectService;
 
     /* ************************************************************add new AO************************************************************ */
     @RequestMapping(value = {"/{objName}/ao/new"}, method = RequestMethod.GET)
@@ -40,8 +40,8 @@ public class AnalogOutputController {
 
         if (result.hasErrors()) return "signaltable/AOs/newAO";
 
-        APCSObject apcsObject = apcsObjectService.getByName(objName);
-        analogOutput.setApcsObject(apcsObject);
+        ProcessControlObject processControlObject = processControlObjectService.getByName(objName);
+        analogOutput.setProcessControlObject(processControlObject);
 
         analogOutputService.save(analogOutput);
 
@@ -67,8 +67,8 @@ public class AnalogOutputController {
 
         analogOutput.setId(aoId);
 
-        APCSObject apcsObject = apcsObjectService.getByName(objName);
-        analogOutput.setApcsObject(apcsObject);
+        ProcessControlObject processControlObject = processControlObjectService.getByName(objName);
+        analogOutput.setProcessControlObject(processControlObject);
 
         analogOutputService.update(analogOutput);
 
@@ -85,12 +85,12 @@ public class AnalogOutputController {
     /* ************************************************************show all by Object************************************************************ */
     @RequestMapping(value = {"/{objName}/ao"}, method = RequestMethod.GET)
     public String allObjectAO(@PathVariable String objName, ModelMap modelMap) {
-        APCSObject apcsObject = apcsObjectService.getByName(objName);
+        ProcessControlObject processControlObject = processControlObjectService.getByName(objName);
 
-        List<AnalogOutput> analogOutputs = analogOutputService.getByAPCSObjectName(objName);
+        List<AnalogOutput> analogOutputs = analogOutputService.getByProcessControlObjectName(objName);
 
         modelMap.addAttribute("analogOutputs", analogOutputs);
-        modelMap.addAttribute("apcsObject", apcsObject);
+        modelMap.addAttribute("apcsObject", processControlObject);
 
         return "signaltable/AOs/objectAOs";
     }

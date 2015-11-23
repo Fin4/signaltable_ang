@@ -7,9 +7,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import rldev.signaltable.entity.APCSObject;
+import rldev.signaltable.entity.ProcessControlObject;
 import rldev.signaltable.entity.DigitalOutput;
-import rldev.signaltable.service.APCSObjectService;
+import rldev.signaltable.service.ProcessControlObjectService;
 import rldev.signaltable.service.DigitalOutputService;
 
 import javax.validation.Valid;
@@ -19,11 +19,8 @@ import java.util.List;
 @RequestMapping("/")
 public class DigitalOutputController {
 
-    @Autowired
-    DigitalOutputService digitalOutputService;
-
-    @Autowired
-    APCSObjectService apcsObjectService;
+    @Autowired DigitalOutputService digitalOutputService;
+    @Autowired ProcessControlObjectService processControlObjectService;
 
     /* ************************************************************add new DO************************************************************ */
     @RequestMapping(value = {"/{objName}/do/new"}, method = RequestMethod.GET)
@@ -40,8 +37,8 @@ public class DigitalOutputController {
 
         if (result.hasErrors()) return "signaltable/DOs/newDO";
 
-        APCSObject apcsObject = apcsObjectService.getByName(objName);
-        digitalOutput.setApcsObject(apcsObject);
+        ProcessControlObject processControlObject = processControlObjectService.getByName(objName);
+        digitalOutput.setProcessControlObject(processControlObject);
 
         digitalOutputService.save(digitalOutput);
 
@@ -67,8 +64,8 @@ public class DigitalOutputController {
 
         digitalOutput.setId(doId);
 
-        APCSObject apcsObject = apcsObjectService.getByName(objName);
-        digitalOutput.setApcsObject(apcsObject);
+        ProcessControlObject processControlObject = processControlObjectService.getByName(objName);
+        digitalOutput.setProcessControlObject(processControlObject);
 
         digitalOutputService.update(digitalOutput);
 
@@ -85,12 +82,12 @@ public class DigitalOutputController {
     /* ************************************************************show all by Object************************************************************ */
     @RequestMapping(value = {"/{objName}/do"}, method = RequestMethod.GET)
     public String allObjectAI(@PathVariable String objName, ModelMap modelMap) {
-        APCSObject apcsObject = apcsObjectService.getByName(objName);
+        ProcessControlObject processControlObject = processControlObjectService.getByName(objName);
 
-        List<DigitalOutput> digitalOutputs = digitalOutputService.getByAPCSObjectName(objName);
+        List<DigitalOutput> digitalOutputs = digitalOutputService.getByProcessControlObjectName(objName);
 
         modelMap.addAttribute("digitalOutputs", digitalOutputs);
-        modelMap.addAttribute("apcsObject", apcsObject);
+        modelMap.addAttribute("apcsObject", processControlObject);
 
         return "signaltable/DOs/objectDOs";
     }

@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import rldev.signaltable.entity.APCSObject;
+import rldev.signaltable.entity.ProcessControlObject;
 import rldev.signaltable.entity.DigitalInput;
-import rldev.signaltable.service.APCSObjectService;
+import rldev.signaltable.service.ProcessControlObjectService;
 import rldev.signaltable.service.DigitalInputService;
 
 import javax.validation.Valid;
@@ -24,7 +24,7 @@ public class DigitalInputController {
     DigitalInputService digitalInputService;
 
     @Autowired
-    APCSObjectService apcsObjectService;
+    ProcessControlObjectService processControlObjectService;
 
     /* ************************************************************add new DI************************************************************ */
     @RequestMapping(value = {"/{objName}/di/new"}, method = RequestMethod.GET)
@@ -41,8 +41,8 @@ public class DigitalInputController {
 
         if (result.hasErrors()) return "signaltable/DIs/newDI";
 
-        APCSObject apcsObject = apcsObjectService.getByName(objName);
-        digitalInput.setApcsObject(apcsObject);
+        ProcessControlObject processControlObject = processControlObjectService.getByName(objName);
+        digitalInput.setProcessControlObject(processControlObject);
 
         digitalInputService.save(digitalInput);
 
@@ -68,8 +68,8 @@ public class DigitalInputController {
 
         digitalInput.setId(diId);
 
-        APCSObject apcsObject = apcsObjectService.getByName(objName);
-        digitalInput.setApcsObject(apcsObject);
+        ProcessControlObject processControlObject = processControlObjectService.getByName(objName);
+        digitalInput.setProcessControlObject(processControlObject);
 
         digitalInputService.update(digitalInput);
 
@@ -87,12 +87,12 @@ public class DigitalInputController {
     @RequestMapping(value = {"/{objName}/di"}, method = RequestMethod.GET)
     public String allObjectDI(@PathVariable String objName, ModelMap modelMap) {
 
-        APCSObject apcsObject = apcsObjectService.getByName(objName);
+        ProcessControlObject processControlObject = processControlObjectService.getByName(objName);
 
-        List<DigitalInput> digitalInputs = digitalInputService.getByAPCSObjectName(objName);
+        List<DigitalInput> digitalInputs = digitalInputService.getByProcessControlObjectName(objName);
 
         modelMap.addAttribute("digitalInputs", digitalInputs);
-        modelMap.addAttribute("apcsObject", apcsObject);
+        modelMap.addAttribute("apcsObject", processControlObject);
 
         return "signaltable/DIs/objectDIs";
     }

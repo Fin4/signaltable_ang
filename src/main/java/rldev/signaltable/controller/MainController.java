@@ -6,10 +6,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import rldev.signaltable.entity.APCSObject;
-import rldev.signaltable.entity.Direction;
-import rldev.signaltable.service.APCSObjectService;
-import rldev.signaltable.service.DirectionService;
+import rldev.signaltable.entity.ProcessControlObject;
+import rldev.signaltable.entity.Department;
+import rldev.signaltable.service.DepartmentService;
+import rldev.signaltable.service.ProcessControlObjectService;
 
 import java.util.List;
 
@@ -18,30 +18,30 @@ import java.util.List;
 public class MainController {
 
     @Autowired
-    private DirectionService directionService;
+    private DepartmentService departmentService;
 
     @Autowired
-    private APCSObjectService apcsObjectService;
+    private ProcessControlObjectService processControlObjectService;
 
     /*@RequestMapping(value = {"/"}, method = RequestMethod.GET)
     public String listDirections(ModelMap modelMap) {
-        List<Direction> directions = directionService.getAll();
+        List<Department> directions = departmentService.getAll();
         modelMap.addAttribute("directions", directions);
         return "main";
     }*/
 
     @RequestMapping(value = {"/signals"}, method = RequestMethod.GET)
     public String buildTable(ModelMap modelMap) {
-        List<Direction> directions = directionService.getAll();
-        modelMap.addAttribute("directions", directions);
+        List<Department> departments = departmentService.getAll();
+        modelMap.addAttribute("directions", departments);
 
         return "signals";
     }
 
     @RequestMapping(value = {"/{id}-apcsObject"}, method = RequestMethod.GET)
     public String showApcsObject(@PathVariable Long id, ModelMap modelMap) {
-        APCSObject apcsObject = apcsObjectService.getById(id);
-        modelMap.addAttribute("apcsObject", apcsObject);
+        ProcessControlObject processControlObject = processControlObjectService.getById(id);
+        modelMap.addAttribute("apcsObject", processControlObject);
 
         return "signals";
     }
