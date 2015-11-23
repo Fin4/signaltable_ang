@@ -45,10 +45,6 @@ public class AnalogOutputDAOImpl extends AbstractDAO<AnalogOutput> implements An
         return query.list();
     }
 
-    public AnalogOutput getByName(String name) {
-        return null;
-    }
-
     public AnalogOutput getBySymbol(String symbol) {
         String hql = "from rldev.signaltable.entity.AnalogOutput as ao where ao.symbol = :symbol";
         Query query = getSessionFactory().createQuery(hql);

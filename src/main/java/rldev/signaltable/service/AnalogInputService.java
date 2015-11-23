@@ -8,8 +8,6 @@ public interface AnalogInputService extends GeneralEntityService<AnalogInput> {
 
     List<AnalogInput> getByAPCSObjectId(Long id);
 
-    AnalogInput getByName(String name);
-
     AnalogInput getBySymbol(String symbol);
 
     List<AnalogInput> getByAPCSObjectName(String name);

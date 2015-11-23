@@ -16,20 +16,15 @@ import java.util.List;
 @RequestMapping("/")
 public class APCSObjectController {
 
-    @Autowired
-    private APCSObjectService apcsObjectService;
-    @Autowired
-    private DigitalInputService digitalInputService;
-    @Autowired
-    private DigitalOutputService digitalOutputService;
-    @Autowired
-    private AnalogInputService analogInputService;
-    @Autowired
-    AnalogOutputService analogOutputService;
+    @Autowired private APCSObjectService apcsObjectService;
+    @Autowired private DigitalInputService digitalInputService;
+    @Autowired private DigitalOutputService digitalOutputService;
+    @Autowired private AnalogInputService analogInputService;
+    @Autowired AnalogOutputService analogOutputService;
 
     @RequestMapping(value = {"/{dirName}"}, method = RequestMethod.GET)
     public String directionObjects(ModelMap modelMap, @PathVariable String dirName) {
-        List<APCSObject> apcsObjects = apcsObjectService.getAllObjectsByDirectionName(dirName);
+        List<APCSObject> apcsObjects = apcsObjectService.getByDirectionName(dirName);
         modelMap.addAttribute("apcsObjects", apcsObjects);
         return "signaltable/APCSObject/objs";
     }
@@ -40,10 +35,10 @@ public class APCSObjectController {
 
         APCSObject apcsObject = apcsObjectService.getByName(objName);
 
-        apcsObject.setDigitalInputList(digitalInputService.getByAPCSObjectName(objName));
-        apcsObject.setAnalogInputList(analogInputService.getByAPCSObjectName(objName));
-        apcsObject.setDigitalOutputList(digitalOutputService.getByAPCSObjectName(objName));
-        apcsObject.setAnalogOutputList(analogOutputService.getByAPCSObjectName(objName));
+        apcsObject.setDigitalInputs(digitalInputService.getByAPCSObjectName(objName));
+        apcsObject.setAnalogInputs(analogInputService.getByAPCSObjectName(objName));
+        apcsObject.setDigitalOutputs(digitalOutputService.getByAPCSObjectName(objName));
+        apcsObject.setAnalogOutputs(analogOutputService.getByAPCSObjectName(objName));
 
         return new ModelAndView("excelView", "apcsObject", apcsObject);
     }

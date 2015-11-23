@@ -6,9 +6,11 @@ import java.util.List;
 
 public interface APCSObjectService extends GeneralEntityService<APCSObject> {
 
-    List<APCSObject> getAllObjectsByDirectionName(String name);
+    List<APCSObject> getByDirectionName(String name);
 
-    List<APCSObject> getAllObjectsByDirectionId(Long id);
+    List<APCSObject> getByDirectionId(Long id);
 
-    APCSObject getApcsObjectBySymbol(String symbol);
+    APCSObject getBySymbol(String symbol);
+
+    APCSObject getByName(String name);
 }

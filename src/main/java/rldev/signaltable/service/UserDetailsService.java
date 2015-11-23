@@ -17,11 +17,8 @@ import java.util.Set;
 @Service("userDetailsService")
 public class UserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
 
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private UserRoleRepository userRoleRepository;
+    @Autowired private UserRepository userRepository;
+    @Autowired private UserRoleRepository userRoleRepository;
 
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
 

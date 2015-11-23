@@ -50,7 +50,7 @@ public class DigitalOutputController {
 
     /* ************************************************************edit existing DO************************************************************ */
     @RequestMapping(value = {"/{objName}/do/{doId}-edit"}, method = RequestMethod.GET)
-    public String eaotDigitalOutput(@PathVariable String objName, @PathVariable Long doId, ModelMap modelMap) {
+    public String editDigitalOutput(@PathVariable String objName, @PathVariable Long doId, ModelMap modelMap) {
 
         DigitalOutput digitalOutput = digitalOutputService.getById(doId);
 

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 public class ExcelBuilder extends AbstractExcelView {
+
     @Override
     protected void buildExcelDocument(Map<String, Object> map, org.apache.poi.hssf.usermodel.HSSFWorkbook hssfWorkbook,
                                       HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
@@ -57,7 +58,7 @@ public class ExcelBuilder extends AbstractExcelView {
 
         // create data rows
         int i = 1;
-        for (DigitalInput digitalInput : apcsObject.getDigitalInputList()){
+        for (DigitalInput digitalInput : apcsObject.getDigitalInputs()){
             HSSFRow dataRow = sheetDI.createRow(i);
             dataRow.createCell(0).setCellValue(digitalInput.getId());
             dataRow.createCell(1).setCellValue(digitalInput.getSymbol());

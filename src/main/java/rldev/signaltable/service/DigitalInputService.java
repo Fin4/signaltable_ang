@@ -8,8 +8,6 @@ public interface DigitalInputService extends GeneralEntityService<DigitalInput> 
 
     List<DigitalInput> getByAPCSObjectId(Long id);
 
-    DigitalInput getByName(String name);
-
     DigitalInput getBySymbol(String symbol);
 
     List<DigitalInput> getByAPCSObjectName(String name);

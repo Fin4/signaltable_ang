@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import rldev.signaltable.configuration.AppConfiguration;
+import rldev.signaltable.dao.UserRepository;
 import rldev.signaltable.entity.*;
 import rldev.signaltable.service.*;
 
@@ -44,7 +45,7 @@ public class ApplicationTests {
 
         int i = 1;
 
-        APCSObject obj = apcsObjectService.getApcsObjectBySymbol("T1");
+        APCSObject obj = apcsObjectService.getBySymbol("T1");
 
         while (i <= 50) {
             DigitalInput digitalInput = new DigitalInput("T1_DI" + i, "T1_DI" + i + " description", obj);
@@ -66,14 +67,19 @@ public class ApplicationTests {
     @Ignore
     @Test
     public void getBigData() {
-        APCSObject apcsObject = apcsObjectService.getApcsObjectBySymbol("T1");
+        APCSObject apcsObject = apcsObjectService.getBySymbol("T1");
 
-        System.out.println(apcsObject.getDigitalInputList());
+        System.out.println(apcsObject.getDigitalInputs());
     }
 
     @Ignore
     @Test
     public void getAPCSDIs(){
         System.out.println(digitalInputService.getByAPCSObjectId((long)5));
+    }
+
+    @Test
+    public void addUser() {
+
     }
 }

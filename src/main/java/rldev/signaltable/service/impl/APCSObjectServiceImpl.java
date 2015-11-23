@@ -52,18 +52,18 @@ public class APCSObjectServiceImpl implements APCSObjectService {
     }
 
     
-    public List<APCSObject> getAllObjectsByDirectionName(String name) {
-        return apcsObjectDAO.getAllObjectsByDirectionName(name);
+    public List<APCSObject> getByDirectionName(String name) {
+        return apcsObjectDAO.getByDirectionName(name);
     }
 
     
-    public List<APCSObject> getAllObjectsByDirectionId(Long id) {
-        return apcsObjectDAO.getAllObjectsByDirectionId(id);
+    public List<APCSObject> getByDirectionId(Long id) {
+        return apcsObjectDAO.getByDirectionId(id);
     }
 
     
-    public APCSObject getApcsObjectBySymbol(String symbol) {
-        return apcsObjectDAO.getApcsObjectBySymbol(symbol);
+    public APCSObject getBySymbol(String symbol) {
+        return apcsObjectDAO.getBySymbol(symbol);
     }
 
 

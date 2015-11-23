@@ -16,7 +16,5 @@ public interface GeneralEntityService<T extends Persistent> {
 
     T getById(Long id);
 
-    T getByName(String name);
-
     List<T> getAll();
 }

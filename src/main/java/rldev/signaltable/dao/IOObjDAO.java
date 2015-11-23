@@ -6,8 +6,6 @@ import java.util.List;
 
 public interface IOObjDAO<T extends IOObject> {
 
-    //T getByName(String name);
-
     T getBySymbol(String symbol);
 
     List<T> getByAPCSObjectName(String name);

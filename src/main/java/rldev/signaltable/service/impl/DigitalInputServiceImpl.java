@@ -51,18 +51,11 @@ public class DigitalInputServiceImpl implements DigitalInputService {
     public List<DigitalInput> getByAPCSObjectId(Long id) {
         return digitalInputDAO.getByAPCSObjectId(id);
     }
-
-    
-    public DigitalInput getByName(String name) {
-        return digitalInputDAO.getByName(name);
-    }
-
     
     public DigitalInput getBySymbol(String symbol) {
         return digitalInputDAO.getBySymbol(symbol);
     }
 
-    
     public List<DigitalInput> getByAPCSObjectName(String name) {
         return digitalInputDAO.getByAPCSObjectName(name);
     }

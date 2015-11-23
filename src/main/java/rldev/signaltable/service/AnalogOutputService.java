@@ -8,8 +8,6 @@ public interface AnalogOutputService extends GeneralEntityService<AnalogOutput> 
 
     List<AnalogOutput> getByAPCSObjectId(Long id);
 
-    AnalogOutput getByName(String name);
-
     AnalogOutput getBySymbol(String symbol);
 
     List<AnalogOutput> getByAPCSObjectName(String name);

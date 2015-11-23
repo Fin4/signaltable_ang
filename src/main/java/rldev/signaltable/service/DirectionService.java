@@ -4,5 +4,5 @@ import rldev.signaltable.entity.Direction;
 
 public interface DirectionService extends GeneralEntityService<Direction> {
 
-    public Direction getDirectionByName(String name);
+    Direction getDirectionByName(String name);
 }

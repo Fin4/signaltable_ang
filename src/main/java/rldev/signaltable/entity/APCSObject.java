@@ -17,11 +17,10 @@ public class APCSObject implements Persistent {
 
     private Direction direction;
 
-    private List<DigitalInput> digitalInputList;
-    private List<AnalogInput> analogInputList;
-    private List<DigitalOutput> digitalOutputList;
-    private List<AnalogOutput> analogOutputList;
-
+    private List<DigitalInput> digitalInputs;
+    private List<AnalogInput> analogInputs;
+    private List<DigitalOutput> digitalOutputs;
+    private List<AnalogOutput> analogOutputs;
 
     @Id
     @GeneratedValue(generator="increment")
@@ -71,42 +70,40 @@ public class APCSObject implements Persistent {
         this.direction = direction;
     }
 
-
-
     @OneToMany(mappedBy = "apcsObject", fetch = FetchType.LAZY)
-    public List<AnalogInput> getAnalogInputList() {
-        return analogInputList;
+    public List<AnalogInput> getAnalogInputs() {
+        return analogInputs;
     }
 
-    public void setAnalogInputList(List<AnalogInput> analogInputList) {
-        this.analogInputList = analogInputList;
+    public void setAnalogInputs(List<AnalogInput> analogInputList) {
+        this.analogInputs = analogInputList;
     }
 
     @OneToMany(mappedBy = "apcsObject", fetch = FetchType.LAZY)
-    public List<DigitalInput> getDigitalInputList() {
-        return digitalInputList;
+    public List<DigitalInput> getDigitalInputs() {
+        return digitalInputs;
     }
 
-    public void setDigitalInputList(List<DigitalInput> digitalInputList) {
-        this.digitalInputList = digitalInputList;
-    }
-
-    @OneToMany(mappedBy = "apcsObject", fetch = FetchType.LAZY)
-    public List<AnalogOutput> getAnalogOutputList() {
-        return analogOutputList;
-    }
-
-    public void setAnalogOutputList(List<AnalogOutput> analogOutputList) {
-        this.analogOutputList = analogOutputList;
+    public void setDigitalInputs(List<DigitalInput> digitalInputList) {
+        this.digitalInputs = digitalInputList;
     }
 
     @OneToMany(mappedBy = "apcsObject", fetch = FetchType.LAZY)
-    public List<DigitalOutput> getDigitalOutputList() {
-        return digitalOutputList;
+    public List<AnalogOutput> getAnalogOutputs() {
+        return analogOutputs;
     }
 
-    public void setDigitalOutputList(List<DigitalOutput> digitalOutputList) {
-        this.digitalOutputList = digitalOutputList;
+    public void setAnalogOutputs(List<AnalogOutput> analogOutputList) {
+        this.analogOutputs = analogOutputList;
+    }
+
+    @OneToMany(mappedBy = "apcsObject", fetch = FetchType.LAZY)
+    public List<DigitalOutput> getDigitalOutputs() {
+        return digitalOutputs;
+    }
+
+    public void setDigitalOutputs(List<DigitalOutput> digitalOutputList) {
+        this.digitalOutputs = digitalOutputList;
     }
 
     @Override

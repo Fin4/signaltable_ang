@@ -21,7 +21,6 @@ public class DirectionDAOImpl extends AbstractDAO<Direction> implements Directio
         getSessionFactory().update(persistent);
     }
 
-    @CacheEvict(value = "directionsCache", allEntries=true)
     public void save(Direction persistent) {
         getSessionFactory().save(persistent);
     }
@@ -42,9 +41,7 @@ public class DirectionDAOImpl extends AbstractDAO<Direction> implements Directio
     }
 
     @SuppressWarnings("unchecked")
-    @Cacheable(value="directionsCache")
     public List<Direction> getAll() {
         return getSessionFactory().createQuery("from rldev.signaltable.entity.Direction").list();
     }
-
 }
