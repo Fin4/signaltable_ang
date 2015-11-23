@@ -15,8 +15,7 @@ import rldev.signaltable.service.UserDetailsService;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
-@ComponentScan(basePackages = {"rldev.signaltable"})
-public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired private UserDetailsService userDetailsService;
 
