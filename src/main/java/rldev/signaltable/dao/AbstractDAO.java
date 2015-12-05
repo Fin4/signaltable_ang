@@ -5,10 +5,9 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import rldev.signaltable.entity.Persistent;
 
-public abstract class AbstractDAO<T extends Persistent> {
+public abstract class AbstractDao<T extends Persistent> {
 
-    @Autowired
-    private SessionFactory sessionFactory;
+    @Autowired private SessionFactory sessionFactory;
 
     public Session getSessionFactory() {
         return sessionFactory.getCurrentSession();

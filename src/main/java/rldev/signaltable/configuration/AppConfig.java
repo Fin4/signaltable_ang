@@ -21,8 +21,8 @@ import rldev.signaltable.service.ExcelBuilder;
 @Configuration
 @EnableCaching
 @EnableWebMvc
-@ComponentScan(basePackages = {"rldev.signaltable"})
-@Import({AppSecurityConfig.class, DataSourceConfig.class})
+@ComponentScan(basePackages = {"rldev.signaltable.*"})
+//@Import({AppSecurityConfig.class, DataSourceConfig.class})
 public class AppConfig {
 
     @Bean

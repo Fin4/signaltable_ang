@@ -15,6 +15,7 @@ import rldev.signaltable.service.UserDetailsService;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
+@ComponentScan(basePackages = {"rldev.signaltable.*"})
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired private UserDetailsService userDetailsService;
@@ -31,12 +32,11 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/pages/index.jsp").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers("/", "/pages/signaltable/index.jsp").permitAll()
                 .and()
                 .formLogin()
-                        //.usernameParameter("username")
-                        //.passwordParameter("password")
+                        .usernameParameter("username")
+                        .passwordParameter("password")
                 .loginPage("/pages/signaltable/login.jsp")
                 .permitAll()
                 .and()

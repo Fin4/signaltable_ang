@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "PCOBJECT")
+@Table(name = "pcobject")
 public class ProcessControlObject implements Persistent {
 
     private Long id;
@@ -20,7 +20,7 @@ public class ProcessControlObject implements Persistent {
     private List<AnalogOutput> analogOutputs;
 
     @Id
-    @GeneratedValue(generator="increment")
+    @GeneratedValue
     @Column(name="id")
     public Long getId() {
         return id;
@@ -58,7 +58,7 @@ public class ProcessControlObject implements Persistent {
     }
 
     @ManyToOne
-    @JoinColumn(name = "fk_department_id", nullable = false)
+    @JoinColumn(name = "department_id", nullable = false)
     public Department getDepartment() {
         return department;
     }

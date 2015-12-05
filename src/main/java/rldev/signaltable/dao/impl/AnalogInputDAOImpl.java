@@ -2,14 +2,16 @@ package rldev.signaltable.dao.impl;
 
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
-import rldev.signaltable.dao.AbstractDAO;
-import rldev.signaltable.dao.AnalogInputDAO;
+import org.springframework.transaction.annotation.Transactional;
+import rldev.signaltable.dao.AbstractDao;
+import rldev.signaltable.dao.AnalogInputDao;
 import rldev.signaltable.entity.AnalogInput;
 
 import java.util.List;
 
-@Repository("analogInputDAO")
-public class AnalogInputDAOImpl extends AbstractDAO<AnalogInput> implements AnalogInputDAO {
+@Repository("analogInputDao")
+@Transactional
+public class AnalogInputDaoImpl extends AbstractDao<AnalogInput> implements AnalogInputDao {
 
     public void delete(AnalogInput persistent) {
         getSessionFactory().delete(persistent);
@@ -37,8 +39,8 @@ public class AnalogInputDAOImpl extends AbstractDAO<AnalogInput> implements Anal
     }
 
     @SuppressWarnings("unchecked")
-    public List<AnalogInput> getByAPCSObjectId(Long id) {
-        String hql = "from rldev.signaltable.entity.AnalogInput as ai where ai.apcsObject.id = :id";
+    public List<AnalogInput> getByProcessControlObjectId(Long id) {
+        String hql = "from rldev.signaltable.entity.AnalogInput as ai where ai.processControlObject.id = :id";
         Query query = getSessionFactory().createQuery(hql);
         query.setParameter("id", id);
         return query.list();
@@ -56,8 +58,8 @@ public class AnalogInputDAOImpl extends AbstractDAO<AnalogInput> implements Anal
     }
 
     @SuppressWarnings("unchecked")
-    public List<AnalogInput> getByAPCSObjectName(String name) {
-        String hql = "from rldev.signaltable.entity.AnalogInput as ai where ai.apcsObject.name = :name";
+    public List<AnalogInput> getByProcessControlObjectName(String name) {
+        String hql = "from rldev.signaltable.entity.AnalogInput as ai where ai.processControlObject.name = :name";
         Query query = getSessionFactory().createQuery(hql);
         query.setParameter("name", name);
         return query.list();

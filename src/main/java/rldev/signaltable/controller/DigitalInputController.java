@@ -92,7 +92,7 @@ public class DigitalInputController {
         List<DigitalInput> digitalInputs = digitalInputService.getByProcessControlObjectName(objName);
 
         modelMap.addAttribute("digitalInputs", digitalInputs);
-        modelMap.addAttribute("apcsObject", processControlObject);
+        modelMap.addAttribute("processControlObject", processControlObject);
 
         return "signaltable/DIs/objectDIs";
     }

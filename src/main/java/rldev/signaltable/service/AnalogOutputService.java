@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface AnalogOutputService extends GeneralEntityService<AnalogOutput> {
 
-    List<AnalogOutput> getByAPCSObjectId(Long id);
+    List<AnalogOutput> getByProcessControlObjectId(Long id);
 
     AnalogOutput getBySymbol(String symbol);
 
-    List<AnalogOutput> getByAPCSObjectName(String name);
+    List<AnalogOutput> getByProcessControlObjectName(String name);
 }

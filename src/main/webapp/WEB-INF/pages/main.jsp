@@ -8,15 +8,15 @@
 
 <%@include file="common/menu.html"%>
 
-<c:forEach items="${directions}" var="direction">
+<c:forEach items="${departments}" var="department">
     <table>
         <tr>
-            <td><a href="<c:url value='/${direction.name}-objects' />">${direction.name}</a></td>
+            <td><a href="<c:url value='/${department.name}-objects' />">${department.name}</a></td>
         </tr>
         <tr>
             <%--<td>
-                <c:forEach items="${direction.apcsObjects}" var="apcsObject">
-                    ${apcsObject.name} <br/>
+                <c:forEach items="${department.processControlObjects}" var="processControlObject">
+                    ${processControlObject.name} <br/>
                 </c:forEach>
             </td>--%>
         </tr>

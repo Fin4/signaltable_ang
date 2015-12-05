@@ -5,10 +5,10 @@
 </head>
 <body>
 <table>
-    <c:forEach items="${apcsObjects}" var="apcsObject">
+    <c:forEach items="${processControlObjects}" var="processControlObject">
         <tr>
             <td>
-                <a href="<c:url value='/${apcsObject.id}-object' />">${apcsObject.name}</a>
+                <a href="<c:url value='/${processControlObject.id}-object' />">${processControlObject.name}</a>
             </td>
         </tr>
     </c:forEach>

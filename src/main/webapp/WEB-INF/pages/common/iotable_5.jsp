@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-  <title>${apcsObject.name}</title>
+  <title>${processControlObject.name}</title>
 
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script>
   <script>
@@ -136,7 +136,7 @@
   </style>
 </head>
 <body>
-<h3 align="center">${apcsObject.name}</h3>
+<h3 align="center">${processControlObject.name}</h3>
 <div>
   <ul class="nav nav-tabs">
     <li><a href="?tab=di">Digital Inputs</a></li>

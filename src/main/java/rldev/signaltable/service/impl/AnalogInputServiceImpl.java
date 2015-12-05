@@ -3,62 +3,61 @@ package rldev.signaltable.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import rldev.signaltable.dao.AnalogInputDAO;
+import rldev.signaltable.dao.AnalogInputDao;
 import rldev.signaltable.entity.AnalogInput;
 import rldev.signaltable.service.AnalogInputService;
 
 import java.util.List;
 
 @Service("analogInputService")
-@Transactional
 public class AnalogInputServiceImpl implements AnalogInputService {
 
     @Autowired
-    private AnalogInputDAO analogInputDAO;
+    private AnalogInputDao analogInputDao;
 
     
     public void save(AnalogInput persistent) {
-        analogInputDAO.save(persistent);
+        analogInputDao.save(persistent);
     }
 
     
     public void update(AnalogInput persistent) {
-        analogInputDAO.update(persistent);
+        analogInputDao.update(persistent);
     }
 
     
     public void delete(AnalogInput persistent) {
-        analogInputDAO.delete(persistent);
+        analogInputDao.delete(persistent);
     }
 
     
     public void deleteById(Long id) {
-        analogInputDAO.deleteById(id);
+        analogInputDao.deleteById(id);
     }
 
     
     public AnalogInput getById(Long id) {
-        return analogInputDAO.getById(id);
+        return analogInputDao.getById(id);
     }
 
     
     public List<AnalogInput> getAll() {
-        return analogInputDAO.getAll();
+        return analogInputDao.getAll();
     }
 
 
     
-    public List<AnalogInput> getByAPCSObjectId(Long id) {
-        return analogInputDAO.getByAPCSObjectId(id);
+    public List<AnalogInput> getByProcessControlObjectId(Long id) {
+        return analogInputDao.getByProcessControlObjectId(id);
     }
 
     
     public AnalogInput getBySymbol(String symbol) {
-        return analogInputDAO.getBySymbol(symbol);
+        return analogInputDao.getBySymbol(symbol);
     }
 
     
-    public List<AnalogInput> getByAPCSObjectName(String name) {
-        return analogInputDAO.getByAPCSObjectName(name);
+    public List<AnalogInput> getByProcessControlObjectName(String name) {
+        return analogInputDao.getByProcessControlObjectName(name);
     }
 }

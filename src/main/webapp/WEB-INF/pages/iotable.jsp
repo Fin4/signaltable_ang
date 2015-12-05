@@ -146,8 +146,8 @@
 </head>
 <body>
 <div id="container">
-    <h1>${apcsObject.name}</h1>
-    <a href="<c:url value='/${apcsObject.id}-object-downloadExcel' />">download excel</a>
+    <h1>${processControlObject.name}</h1>
+    <a href="<c:url value='/${processControlObject.id}-object-downloadExcel' />">download excel</a>
     <div class="tabs">
         <input id="di" type="radio" name="tabs" checked>
         <label for="di" title="DI">DI</label>
@@ -162,17 +162,17 @@
         <label for="ao" title="AO">AO</label>
 
         <section id="diContent">
-            <a href="<c:url value='/${apcsObject.id}-object-newDI' />">Add New DI</a>
+            <a href="<c:url value='/${processControlObject.id}-object-newDI' />">Add New DI</a>
             <table>
                 <tr>
                     <th>ID</th>
                     <th>Symbol</th>
                     <th>Description</th>
                 </tr>
-                <c:forEach items="${apcsObject.digitalInputList}" var="digitalInput">
+                <c:forEach items="${processControlObject.digitalInputList}" var="digitalInput">
                     <tr>
-                        <td>${digitalInput.id} <a href="<c:url value='/${apcsObject.id}-object-edit-${digitalInput.id}' />">edit</a>
-                            <a href="<c:url value='/${apcsObject.id}-object-del-${digitalInput.id}' />">delete</a></td>
+                        <td>${digitalInput.id} <a href="<c:url value='/${processControlObject.id}-object-edit-${digitalInput.id}' />">edit</a>
+                            <a href="<c:url value='/${processControlObject.id}-object-del-${digitalInput.id}' />">delete</a></td>
                         <td>${digitalInput.symbol}</td>
                         <td>${digitalInput.description}</td>
                     </tr>
@@ -187,7 +187,7 @@
                     <th>Symbol</th>
                     <th>Description</th>
                 </tr>
-                <c:forEach items="${apcsObject.analogInputList}" var="analogInput">
+                <c:forEach items="${processControlObject.analogInputList}" var="analogInput">
                     <tr>
                         <td>${analogInput.id}</td>
                         <td>${analogInput.symbol}</td>
@@ -204,7 +204,7 @@
                     <th>Symbol</th>
                     <th>Description</th>
                 </tr>
-                <c:forEach items="${apcsObject.digitalOutputList}" var="digitalOutput">
+                <c:forEach items="${processControlObject.digitalOutputList}" var="digitalOutput">
                     <tr>
                         <td>${digitalOutput.id}</td>
                         <td>${digitalOutput.symbol}</td>
@@ -221,7 +221,7 @@
                     <th>Symbol</th>
                     <th>Description</th>
                 </tr>
-                <c:forEach items="${apcsObject.analogOutputList}" var="analogOutput">
+                <c:forEach items="${processControlObject.analogOutputList}" var="analogOutput">
                     <tr>
                         <td>${analogOutput.id}</td>
                         <td>${analogOutput.symbol}</td>

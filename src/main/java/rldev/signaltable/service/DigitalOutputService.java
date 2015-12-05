@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface DigitalOutputService extends GeneralEntityService<DigitalOutput> {
 
-    List<DigitalOutput> getByAPCSObjectId(Long id);
+    List<DigitalOutput> getByProcessControlObjectId(Long id);
 
     DigitalOutput getBySymbol(String symbol);
 
-    List<DigitalOutput> getByAPCSObjectName(String name);
+    List<DigitalOutput> getByProcessControlObjectName(String name);
 }

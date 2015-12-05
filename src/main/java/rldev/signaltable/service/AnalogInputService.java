@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface AnalogInputService extends GeneralEntityService<AnalogInput> {
 
-    List<AnalogInput> getByAPCSObjectId(Long id);
+    List<AnalogInput> getByProcessControlObjectId(Long id);
 
     AnalogInput getBySymbol(String symbol);
 
-    List<AnalogInput> getByAPCSObjectName(String name);
+    List<AnalogInput> getByProcessControlObjectName(String name);
 }

@@ -6,10 +6,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import rldev.signaltable.dao.UserRepository;
-import rldev.signaltable.dao.UserRoleRepository;
+import rldev.signaltable.dao.UserDao;
+import rldev.signaltable.dao.RoleDao;
 import rldev.signaltable.entity.User;
-import rldev.signaltable.entity.UserRole;
+import rldev.signaltable.entity.Role;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,17 +17,17 @@ import java.util.Set;
 @Service("userDetailsService")
 public class UserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
 
-    @Autowired private UserRepository userRepository;
-    @Autowired private UserRoleRepository userRoleRepository;
+    @Autowired private UserDao userDao;
+    @Autowired private RoleDao roleDao;
 
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
 
-        User user = userRepository.findByUsername(s);
-        Set<UserRole> roles = new HashSet<UserRole>(userRoleRepository.findByUsername(s));
+        User user = userDao.findByUsername(s);
+        Set<Role> roles = new HashSet<Role>(roleDao.findByUsername(s));
 
         Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
 
-        for(UserRole role : roles) {
+        for(Role role : roles) {
             authorities.add(new SimpleGrantedAuthority(role.getRole()));
         }
 

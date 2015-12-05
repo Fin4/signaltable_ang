@@ -4,13 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ANALOGINPUT")
-public class AnalogInput extends IOObject {
+@Table(name = "analoginput")
+public class AnalogInput extends IoUnit {
 
     public AnalogInput() {}
 
-    public AnalogInput(String symbol, String description, APCSObject apcsObject) {
-        super(symbol, description, apcsObject);
+    public AnalogInput(String symbol, String description, ProcessControlObject processControlObject) {
+        super(symbol, description, processControlObject);
     }
 
     @Override

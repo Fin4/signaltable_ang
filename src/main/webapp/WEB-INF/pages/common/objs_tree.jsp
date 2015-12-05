@@ -73,21 +73,21 @@
         <li>
             <div><p><a href="#" class="sc" onclick="return UnHide(this)">&#9660;</a>
                 <a href="#">Automation Control Objects</a></p></div>
-            <c:forEach items="${directions}" var="direction">
+            <c:forEach items="${departments}" var="department">
                 <ul>
                     <li class="cl">
                         <div>
                             <p>
                                 <a href="#" class="sc" onclick="return UnHide(this)">&#9658;</a>
-                                <a href="#">${direction.name}</a>
+                                <a href="#">${department.name}</a>
                             </p>
                         </div>
-                        <c:forEach items="${direction.apcsObjects}" var="apcsObject">
+                        <c:forEach items="${department.processControlObjects}" var="processControlObject">
                             <ul>
                                 <li>
                                     <div>
                                         <p>
-                                            <a href="<c:url value='/${apcsObject.id}-apcsObject' />">${apcsObject.name}</a>
+                                            <a href="<c:url value='/${processControlObject.id}-processControlObject' />">${processControlObject.name}</a>
                                         </p>
                                     </div>
                                 </li>

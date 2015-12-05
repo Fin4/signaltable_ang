@@ -24,8 +24,8 @@ public class ProcessControlObjectController {
 
     @RequestMapping(value = {"/{dirName}"}, method = RequestMethod.GET)
     public String directionObjects(ModelMap modelMap, @PathVariable String dirName) {
-        List<ProcessControlObject> processControlObjects = processControlObjectService.getByDirectionName(dirName);
-        modelMap.addAttribute("apcsObjects", processControlObjects);
+        List<ProcessControlObject> processControlObjects = processControlObjectService.getByDepartmentName(dirName);
+        modelMap.addAttribute("processControlObjects", processControlObjects);
         return "signaltable/ProcessControlObject/objs";
     }
 
@@ -35,11 +35,11 @@ public class ProcessControlObjectController {
 
         ProcessControlObject processControlObject = processControlObjectService.getByName(objName);
 
-        processControlObject.setDigitalInputs(digitalInputService.getByAPCSObjectName(objName));
-        processControlObject.setAnalogInputs(analogInputService.getByAPCSObjectName(objName));
-        processControlObject.setDigitalOutputs(digitalOutputService.getByAPCSObjectName(objName));
-        processControlObject.setAnalogOutputs(analogOutputService.getByAPCSObjectName(objName));
+        processControlObject.setDigitalInputs(digitalInputService.getByProcessControlObjectName(objName));
+        processControlObject.setAnalogInputs(analogInputService.getByProcessControlObjectName(objName));
+        processControlObject.setDigitalOutputs(digitalOutputService.getByProcessControlObjectName(objName));
+        processControlObject.setAnalogOutputs(analogOutputService.getByProcessControlObjectName(objName));
 
-        return new ModelAndView("excelView", "apcsObject", processControlObject);
+        return new ModelAndView("excelView", "ProcessControlObject", processControlObject);
     }
 }

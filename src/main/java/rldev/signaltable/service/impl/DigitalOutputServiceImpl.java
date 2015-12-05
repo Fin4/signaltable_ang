@@ -3,18 +3,17 @@ package rldev.signaltable.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import rldev.signaltable.dao.DigitalOutputDAO;
+import rldev.signaltable.dao.DigitalOutputDao;
 import rldev.signaltable.entity.DigitalOutput;
 import rldev.signaltable.service.DigitalOutputService;
 
 import java.util.List;
 
 @Service("digitalOutputService")
-@Transactional
 public class DigitalOutputServiceImpl implements DigitalOutputService {
 
     @Autowired
-    private DigitalOutputDAO digitalOutputDAO;
+    private DigitalOutputDao digitalOutputDAO;
 
     
     public void save(DigitalOutput persistent) {
@@ -48,8 +47,8 @@ public class DigitalOutputServiceImpl implements DigitalOutputService {
 
 
     
-    public List<DigitalOutput> getByAPCSObjectId(Long id) {
-        return digitalOutputDAO.getByAPCSObjectId(id);
+    public List<DigitalOutput> getByProcessControlObjectId(Long id) {
+        return digitalOutputDAO.getByProcessControlObjectId(id);
     }
 
     
@@ -58,7 +57,7 @@ public class DigitalOutputServiceImpl implements DigitalOutputService {
     }
 
     
-    public List<DigitalOutput> getByAPCSObjectName(String name) {
-        return digitalOutputDAO.getByAPCSObjectName(name);
+    public List<DigitalOutput> getByProcessControlObjectName(String name) {
+        return digitalOutputDAO.getByProcessControlObjectName(name);
     }
 }

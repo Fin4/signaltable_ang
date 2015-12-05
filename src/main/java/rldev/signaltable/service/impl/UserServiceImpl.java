@@ -2,7 +2,7 @@ package rldev.signaltable.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import rldev.signaltable.dao.UserRepository;
+import rldev.signaltable.dao.UserDao;
 import rldev.signaltable.entity.User;
 import rldev.signaltable.service.UserService;
 
@@ -11,33 +11,33 @@ import java.util.List;
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
-    @Autowired private UserRepository userRepository;
+    @Autowired private UserDao userDao;
 
     public void save(User persistent) {
-        userRepository.save(persistent);
+        userDao.save(persistent);
     }
 
     public void update(User persistent) {
-        userRepository.save(persistent);
+        userDao.save(persistent);
     }
 
     public void delete(User persistent) {
-        userRepository.delete(persistent);
+        userDao.delete(persistent);
     }
 
     public void deleteById(Long id) {
-        userRepository.delete(id);
+        userDao.deleteById(id);
     }
 
     public User getById(Long id) {
-        return userRepository.findOne(id);
+        return userDao.getById(id);
     }
 
     public List<User> getAll() {
-        return userRepository.findAll();
+        return userDao.getAll();
     }
 
     public User findByUsername(String username) {
-        return userRepository.findByUsername(username);
+        return userDao.findByUsername(username);
     }
 }

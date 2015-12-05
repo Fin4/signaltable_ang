@@ -2,14 +2,16 @@ package rldev.signaltable.dao.impl;
 
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
-import rldev.signaltable.dao.AbstractDAO;
-import rldev.signaltable.dao.AnalogOutputDAO;
+import org.springframework.transaction.annotation.Transactional;
+import rldev.signaltable.dao.AbstractDao;
+import rldev.signaltable.dao.AnalogOutputDao;
 import rldev.signaltable.entity.AnalogOutput;
 
 import java.util.List;
 
-@Repository("analogOutputDAO")
-public class AnalogOutputDAOImpl extends AbstractDAO<AnalogOutput> implements AnalogOutputDAO {
+@Repository("analogOutputDao")
+@Transactional
+public class AnalogOutputDaoImpl extends AbstractDao<AnalogOutput> implements AnalogOutputDao {
 
     
     public void save(AnalogOutput persistent) {
@@ -38,8 +40,8 @@ public class AnalogOutputDAOImpl extends AbstractDAO<AnalogOutput> implements An
     }
 
     @SuppressWarnings("unchecked")
-    public List<AnalogOutput> getByAPCSObjectId(Long id) {
-        String hql = "from AnalogOutput as ao where ao.apcsObject.id = :id";
+    public List<AnalogOutput> getByProcessControlObjectId(Long id) {
+        String hql = "from AnalogOutput as ao where ao.processControlObject.id = :id";
         Query query = getSessionFactory().createQuery(hql);
         query.setParameter("id", id);
         return query.list();
@@ -53,8 +55,8 @@ public class AnalogOutputDAOImpl extends AbstractDAO<AnalogOutput> implements An
     }
 
     @SuppressWarnings("unchecked")
-    public List<AnalogOutput> getByAPCSObjectName(String name) {
-        String hql = "from rldev.signaltable.entity.AnalogOutput as ao where ao.apcsObject.name = :name";
+    public List<AnalogOutput> getByProcessControlObjectName(String name) {
+        String hql = "from rldev.signaltable.entity.AnalogOutput as ao where ao.processControlObject.name = :name";
         Query query = getSessionFactory().createQuery(hql);
         query.setParameter("name", name);
         return query.list();

@@ -4,7 +4,7 @@ import rldev.signaltable.entity.Persistent;
 
 import java.util.List;
 
-public interface GeneralDAO<T extends Persistent> {
+public interface GeneralDao<T extends Persistent> {
 
     void save(T persistent);
 

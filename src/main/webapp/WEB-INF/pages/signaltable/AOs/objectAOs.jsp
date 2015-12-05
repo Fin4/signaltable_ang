@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>${apcsObject.name}</title>
+    <title>${processControlObject.name}</title>
     <style>
         #menu {
             width: 100%;
@@ -99,19 +99,19 @@
 <div id="workspace">
     <table>
         <tr>
-            <th><h3>${apcsObject.name}</h3></th>
-            <th><a href="<c:url value='/${apcsObject.name}/di'/>">DI</a></th>
-            <th><a href="<c:url value='/${apcsObject.name}/ai'/>">AI</a></th>
-            <th><a href="<c:url value='/${apcsObject.name}/do'/>">DO</a></th>
-            <th><a href="<c:url value='/${apcsObject.name}/ao'/>">AO</a></th>
+            <th><h3>${processControlObject.name}</h3></th>
+            <th><a href="<c:url value='/${processControlObject.name}/di'/>">DI</a></th>
+            <th><a href="<c:url value='/${processControlObject.name}/ai'/>">AI</a></th>
+            <th><a href="<c:url value='/${processControlObject.name}/do'/>">DO</a></th>
+            <th><a href="<c:url value='/${processControlObject.name}/ao'/>">AO</a></th>
         </tr>
     </table>
     <table>
         <thead>
         <tr><th colspan="2">Аналоговые выходы</th>
             <th class="tablemenu">
-                <a href="<c:url value='/${apcsObject.name}-downloadExcel'/>" class="mbutton">excel</a>
-                <a href="<c:url value='/${apcsObject.name}/ao/new'/>" class="mbutton">add new</a>
+                <a href="<c:url value='/${processControlObject.name}-downloadExcel'/>" class="mbutton">excel</a>
+                <a href="<c:url value='/${processControlObject.name}/ao/new'/>" class="mbutton">add new</a>
             </th>
         </tr>
         <tr>
@@ -123,8 +123,8 @@
         <tbody>
         <c:forEach items="${analogOutputs}" var="analogOutput">
             <tr>
-                <td>${analogOutput.id} <a href="<c:url value='/${apcsObject.name}/ao/${analogOutput.id}-edit'/>" class="button">edit</a>
-                    <c:url var="deleteURL" value='/${apcsObject.name}/ao/${analogOutput.id}-delete'/>
+                <td>${analogOutput.id} <a href="<c:url value='/${processControlObject.name}/ao/${analogOutput.id}-edit'/>" class="button">edit</a>
+                    <c:url var="deleteURL" value='/${processControlObject.name}/ao/${analogOutput.id}-delete'/>
                     <form action="${deleteURL}" method="POST">
                         <input id="analogOutput" name="analogOutput" type="hidden" value="${analogOutput.id}"/>
                         <input class="button" type="submit" value="delete" onClick="return confirm('Удалить элемент?')"/>

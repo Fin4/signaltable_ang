@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Adding new direction</title>
+    <title>Adding new department</title>
 
     <style>
 
@@ -17,7 +17,7 @@
 
 </head>
 <body>
-<form:form method="POST" modelAttribute="direction">
+<form:form method="POST" modelAttribute="department">
     <table>
         <tr>
             <td><label for="name">name: </label> </td>
@@ -25,7 +25,7 @@
         </tr>
 
         <tr>
-            <td colspan="3"><input type="submit" value="add direction"/></td>
+            <td colspan="3"><input type="submit" value="add department"/></td>
         </tr>
     </table>
 </form:form>

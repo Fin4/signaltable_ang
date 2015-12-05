@@ -33,13 +33,13 @@ public class MainController {
     @RequestMapping(value = {"/signals"}, method = RequestMethod.GET)
     public String buildTable(ModelMap modelMap) {
         List<Department> departments = departmentService.getAll();
-        modelMap.addAttribute("directions", departments);
+        modelMap.addAttribute("departments", departments);
 
-        return "signals";
+        return "signaltable/Department/departments";
     }
 
     @RequestMapping(value = {"/{id}-apcsObject"}, method = RequestMethod.GET)
-    public String showApcsObject(@PathVariable Long id, ModelMap modelMap) {
+    public String getProcessControlObject(@PathVariable Long id, ModelMap modelMap) {
         ProcessControlObject processControlObject = processControlObjectService.getById(id);
         modelMap.addAttribute("apcsObject", processControlObject);
 

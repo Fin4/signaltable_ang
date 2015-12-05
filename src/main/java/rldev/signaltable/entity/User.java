@@ -1,11 +1,10 @@
 package rldev.signaltable.entity;
 
-
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "USER")
+@Table(name = "user")
 public class User implements Persistent {
 
     private Long id;
@@ -14,19 +13,11 @@ public class User implements Persistent {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private Set roles;
-
-    public Set getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set roles) {
-        this.roles = roles;
-    }
+    private Set<Role> roles;
 
     @Id
-    @GeneratedValue(generator = "increment")
-    @Column(name = "ID")
+    @GeneratedValue
+    @Column(name = "id")
     public Long getId() {
         return id;
     }
@@ -35,7 +26,7 @@ public class User implements Persistent {
         this.id = id;
     }
 
-    @Column(name = "PHONENUMBER")
+    @Column(name = "phonenumber")
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -44,7 +35,7 @@ public class User implements Persistent {
         this.phoneNumber = phoneNumber;
     }
 
-    @Column(name = "USERNAME", nullable = false, unique = true)
+    @Column(name = "username", nullable = false, unique = true)
     public String getUsername() {
         return username;
     }
@@ -53,7 +44,7 @@ public class User implements Persistent {
         this.username = username;
     }
 
-    @Column(name = "PASSWORD", nullable = false)
+    @Column(name = "userpassword", nullable = false)
     public String getPassword() {
         return password;
     }
@@ -62,7 +53,7 @@ public class User implements Persistent {
         this.password = password;
     }
 
-    @Column(name = "FIRSTNAME")
+    @Column(name = "firstname")
     public String getFirstName() {
         return firstName;
     }
@@ -71,13 +62,24 @@ public class User implements Persistent {
         this.firstName = firstName;
     }
 
-    @Column(name = "LASTNAME")
+    @Column(name = "lastname")
     public String getLastName() {
         return lastName;
     }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_role", joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id")})
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set roles) {
+        this.roles = roles;
     }
 
     @Override
@@ -94,5 +96,14 @@ public class User implements Persistent {
     @Override
     public int hashCode() {
         return getUsername().hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }

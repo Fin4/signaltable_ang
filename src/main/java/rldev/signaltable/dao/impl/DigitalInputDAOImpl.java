@@ -2,14 +2,16 @@ package rldev.signaltable.dao.impl;
 
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
-import rldev.signaltable.dao.AbstractDAO;
-import rldev.signaltable.dao.DigitalInputDAO;
+import org.springframework.transaction.annotation.Transactional;
+import rldev.signaltable.dao.AbstractDao;
+import rldev.signaltable.dao.DigitalInputDao;
 import rldev.signaltable.entity.DigitalInput;
 
 import java.util.List;
 
-@Repository("diDAO")
-public class DigitalInputDAOImpl extends AbstractDAO<DigitalInput> implements DigitalInputDAO {
+@Repository("digitalInputDao")
+@Transactional
+public class DigitalInputDaoImpl extends AbstractDao<DigitalInput> implements DigitalInputDao {
 
 
     public void save(DigitalInput persistent) {
@@ -38,8 +40,8 @@ public class DigitalInputDAOImpl extends AbstractDAO<DigitalInput> implements Di
     }
 
     @SuppressWarnings("unchecked")
-    public List<DigitalInput> getByAPCSObjectId(Long id) {
-        String hql = "from DigitalInput as di where di.apcsObject.id = :id";
+    public List<DigitalInput> getByProcessControlObjectId(Long id) {
+        String hql = "from DigitalInput as di where di.processControlObject.id = :id";
         Query query = getSessionFactory().createQuery(hql);
         query.setParameter("id", id);
         return query.list();
@@ -57,8 +59,8 @@ public class DigitalInputDAOImpl extends AbstractDAO<DigitalInput> implements Di
     }
 
     @SuppressWarnings("unchecked")
-    public List<DigitalInput> getByAPCSObjectName(String name) {
-        String hql = "from DigitalInput as di where di.apcsObject.name = :name";
+    public List<DigitalInput> getByProcessControlObjectName(String name) {
+        String hql = "from DigitalInput as di where di.processControlObject.name = :name";
         Query query = getSessionFactory().createQuery(hql);
         query.setParameter("name", name);
         return query.list();

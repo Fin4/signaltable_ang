@@ -3,16 +3,16 @@ package rldev.signaltable.entity;
 import javax.persistence.*;
 
 @MappedSuperclass
-public abstract class IOObject implements Persistent {
+public abstract class IoUnit implements Persistent {
 
     protected Long id;
     protected String symbol;
     protected String description;
 
-    protected APCSObject apcsObject;
+    protected ProcessControlObject processControlObject;
 
     @Id
-    @GeneratedValue(generator="increment")
+    @GeneratedValue
     //@GenericGenerator(name="increment", strategy = "increment")
     @Column(name = "id")
     public Long getId() {
@@ -42,22 +42,22 @@ public abstract class IOObject implements Persistent {
     }
 
     @ManyToOne
-    @JoinColumn(name = "fk_apcsobject_id", nullable = false, insertable = true)
-    public APCSObject getApcsObject() {
-        return apcsObject;
+    @JoinColumn(name = "pcobject_id", nullable = false, insertable = true)
+    public ProcessControlObject getProcessControlObject() {
+        return processControlObject;
     }
 
-    public void setApcsObject(APCSObject apcsObject) {
-        this.apcsObject = apcsObject;
-        //symbol = apcsObject.getSymbol() + "_" + symbol;
+    public void setProcessControlObject(ProcessControlObject processControlObject) {
+        this.processControlObject = processControlObject;
+        //symbol = processControlObject.getSymbol() + "_" + symbol;
     }
 
-    protected IOObject() {}
+    protected IoUnit() {}
 
-    protected IOObject(String symbol, String description, APCSObject apcsObject) {
+    protected IoUnit(String symbol, String description, ProcessControlObject processControlObject) {
         this.symbol = symbol;
         this.description = description;
-        this.apcsObject = apcsObject;
+        this.processControlObject = processControlObject;
     }
 
     @Override
@@ -68,20 +68,20 @@ public abstract class IOObject implements Persistent {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof IOObject)) return false;
+        if (!(o instanceof IoUnit)) return false;
 
-        IOObject ioObject = (IOObject) o;
+        IoUnit ioUnit = (IoUnit) o;
 
-        if (getSymbol() != null ? !getSymbol().equals(ioObject.getSymbol()) : ioObject.getSymbol() != null)
+        if (getSymbol() != null ? !getSymbol().equals(ioUnit.getSymbol()) : ioUnit.getSymbol() != null)
             return false;
-        return !(getApcsObject() != null ? !getApcsObject().equals(ioObject.getApcsObject()) : ioObject.getApcsObject() != null);
+        return !(getProcessControlObject() != null ? !getProcessControlObject().equals(ioUnit.getProcessControlObject()) : ioUnit.getProcessControlObject() != null);
 
     }
 
     @Override
     public int hashCode() {
         int result = getSymbol() != null ? getSymbol().hashCode() : 0;
-        result = 31 * result + (getApcsObject() != null ? getApcsObject().hashCode() : 0);
+        result = 31 * result + (getProcessControlObject() != null ? getProcessControlObject().hashCode() : 0);
         return result;
     }
 }

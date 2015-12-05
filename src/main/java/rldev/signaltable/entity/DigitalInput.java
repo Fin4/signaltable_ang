@@ -3,13 +3,13 @@ package rldev.signaltable.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "DIGITALINPUT")
-public class DigitalInput extends IOObject {
+@Table(name = "digitalinput")
+public class DigitalInput extends IoUnit {
 
     public DigitalInput() {}
 
-    public DigitalInput(String symbol, String description, APCSObject apcsObject) {
-        super(symbol, description, apcsObject);
+    public DigitalInput(String symbol, String description, ProcessControlObject processControlObject) {
+        super(symbol, description, processControlObject);
     }
 
     @Override

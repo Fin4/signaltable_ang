@@ -4,12 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "DIGITALOUTPUT")
-public class DigitalOutput extends IOObject {
+@Table(name = "digitaloutput")
+public class DigitalOutput extends IoUnit {
 
     public DigitalOutput() {}
 
-    public DigitalOutput(String symbol, String description, APCSObject apcsObject) {
-        super(symbol, description, apcsObject);
+    public DigitalOutput(String symbol, String description, ProcessControlObject processControlObject) {
+        super(symbol, description, processControlObject);
     }
 }

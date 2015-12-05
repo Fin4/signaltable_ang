@@ -20,7 +20,7 @@
 
 <body>
 
-<h2>adding new DI to ${digitalInput.apcsObject.name}</h2>
+<h2>adding new DI to ${digitalInput.processControlObject.name}</h2>
 
 <form:form method="POST" modelAttribute="digitalInput">
   <table>

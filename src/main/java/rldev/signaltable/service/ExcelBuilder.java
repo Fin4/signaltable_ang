@@ -7,7 +7,7 @@ import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
 import org.springframework.web.servlet.view.document.AbstractExcelView;
-import rldev.signaltable.entity.APCSObject;
+import rldev.signaltable.entity.ProcessControlObject;
 import rldev.signaltable.entity.DigitalInput;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +20,7 @@ public class ExcelBuilder extends AbstractExcelView {
     protected void buildExcelDocument(Map<String, Object> map, org.apache.poi.hssf.usermodel.HSSFWorkbook hssfWorkbook,
                                       HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
 
-        APCSObject apcsObject =(APCSObject) map.get("apcsObject");
+        ProcessControlObject processControlObject =(ProcessControlObject) map.get("processControlObject");
         // create a new Excel sheet
         HSSFSheet sheetDI = hssfWorkbook.createSheet("DI");
         sheetDI.setDefaultColumnWidth(50);
@@ -58,7 +58,7 @@ public class ExcelBuilder extends AbstractExcelView {
 
         // create data rows
         int i = 1;
-        for (DigitalInput digitalInput : apcsObject.getDigitalInputs()){
+        for (DigitalInput digitalInput : processControlObject.getDigitalInputs()){
             HSSFRow dataRow = sheetDI.createRow(i);
             dataRow.createCell(0).setCellValue(digitalInput.getId());
             dataRow.createCell(1).setCellValue(digitalInput.getSymbol());

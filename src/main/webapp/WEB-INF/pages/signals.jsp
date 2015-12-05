@@ -18,14 +18,6 @@
             top:102px;
             left:0px;
         }
-        #panel {
-            width: 5%;
-            height: auto;
-            position: absolute;
-            top:102px;
-            left:95%;
-            alignment: right;
-        }
         #iotable {
             width: 75%;
             height: auto;

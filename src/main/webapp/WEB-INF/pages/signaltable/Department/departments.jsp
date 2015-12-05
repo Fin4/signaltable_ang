@@ -6,8 +6,8 @@
 </head>
 <body>
 <ul>
-  <c:forEach items="${directions}" var="direction">
-    <li ><a href="<c:url value='/${direction.name}'/>">${direction.name}</a></li>
+  <c:forEach items="${departments}" var="department">
+    <li ><a href="<c:url value='/${department.name}'/>">${department.name}</a></li>
   </c:forEach>
 </ul>
 </body>

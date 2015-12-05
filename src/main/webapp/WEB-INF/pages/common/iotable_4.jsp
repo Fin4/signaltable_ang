@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>${apcsObject.name}</title>
+    <title>${processControlObject.name}</title>
     <script type='text/javascript' src='//code.jquery.com/jquery-1.9.1.js'></script>
 
     <%--<link rel="stylesheet" type="text/css" href="iotableResources/iotable_css.css">--%>
@@ -35,7 +35,7 @@
     </script>
 </head>
 <body>
-<h3 align="center">${apcsObject.name}</h3>
+<h3 align="center">${processControlObject.name}</h3>
 <div class="tabbable">
     <ul class="tabs">
         <li><a href="?tab=di">Digital Inputs</a></li>

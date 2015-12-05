@@ -6,8 +6,9 @@
 </head>
 <body>
 <ul>
-    <c:forEach items="${apcsObjects}" var="apcsObject">
-        <li ><a href="<c:url value='/${apcsObject.name}/di'/>">${apcsObject.name}</a></li>
+    <h1>Objects</h1>
+    <c:forEach items="${processControlObjects}" var="processControlObject">
+        <li ><a href="<c:url value='/${processControlObject.name}/di'/>">${processControlObject.name}</a></li>
     </c:forEach>
 </ul>
 </body>

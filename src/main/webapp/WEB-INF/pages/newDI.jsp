@@ -43,6 +43,6 @@
 </form:form>
 <br/>
 <br/>
-${digitalInput.apcsObject}<br/>
+${digitalInput.processControlObject}<br/>
 </body>
 </html>

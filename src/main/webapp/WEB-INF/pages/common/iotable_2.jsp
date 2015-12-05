@@ -87,7 +87,7 @@
 
     <div class="tab-content">
         <div id="di" class="tab active">
-            <a href="<c:url value='/${apcsObject.id}-object-newDI' />">Add New DI</a>
+            <a href="<c:url value='/${processControlObject.id}-object-newDI' />">Add New DI</a>
             <table>
                 <tr>
                     <th>ID</th>
@@ -96,8 +96,8 @@
                 </tr>
                 <c:forEach items="${digitalInputs}" var="digitalInput">
                     <tr>
-                        <td>${digitalInput.id} <a href="<c:url value='/${apcsObject.id}-object-edit-${digitalInput.id}' />">edit</a>
-                            <a href="<c:url value='/${apcsObject.id}-object-del-${digitalInput.id}' />">delete</a></td>
+                        <td>${digitalInput.id} <a href="<c:url value='/${processControlObject.id}-object-edit-${digitalInput.id}' />">edit</a>
+                            <a href="<c:url value='/${processControlObject.id}-object-del-${digitalInput.id}' />">delete</a></td>
                         <td>${digitalInput.symbol}</td>
                         <td>${digitalInput.description}</td>
                     </tr>
