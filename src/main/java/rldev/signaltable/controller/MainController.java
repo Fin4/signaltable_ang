@@ -23,12 +23,10 @@ public class MainController {
     @Autowired
     private ProcessControlObjectService processControlObjectService;
 
-    /*@RequestMapping(value = {"/"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/"}, method = RequestMethod.GET)
     public String listDirections(ModelMap modelMap) {
-        List<Department> directions = departmentService.getAll();
-        modelMap.addAttribute("directions", directions);
-        return "main";
-    }*/
+        return "index";
+    }
 
     @RequestMapping(value = {"/signals"}, method = RequestMethod.GET)
     public String buildTable(ModelMap modelMap) {

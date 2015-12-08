@@ -20,12 +20,8 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired private UserDetailsService userDetailsService;
 
-    //@Autowired
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
-        /*auth.jdbcAuthentication().dataSource(dataSource).
-                usersByUsernameQuery("select username, password from eshop.customers where username=?").
-                authoritiesByUsernameQuery("select username, role from eshop.user_roles where username=?");*/
     }
 
     @Override
@@ -35,9 +31,10 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/pages/signaltable/index.jsp").permitAll()
                 .and()
                 .formLogin()
-                        .usernameParameter("username")
-                        .passwordParameter("password")
-                .loginPage("/pages/signaltable/login.jsp")
+                .loginPage("/login")
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .defaultSuccessUrl("/signals")
                 .permitAll()
                 .and()
                 .logout()

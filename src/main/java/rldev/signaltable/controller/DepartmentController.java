@@ -18,14 +18,6 @@ public class DepartmentController {
 
     @Autowired DepartmentService DepartmentService;
 
-    @RequestMapping(value = {"/"}, method = RequestMethod.GET)
-    public String listDepartments(ModelMap modelMap) {
-        List<Department> departments = DepartmentService.getAll();
-        modelMap.addAttribute("Departments", departments);
-
-        return "signaltable/Department/departments";
-    }
-
     @RequestMapping(value = {"/newDepartment"}, method = RequestMethod.GET)
     public String newDepartment(ModelMap modelMap) {
         Department department = new Department();

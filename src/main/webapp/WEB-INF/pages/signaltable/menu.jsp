@@ -30,6 +30,11 @@
             <li class="active"><a href="<c:url value='/'/>">Main</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+            <li>
+                <c:if test="${pageContext.request.userPrincipal.name != null}">
+                    <p>You signed as: ${pageContext.request.userPrincipal.name}</p>
+                </c:if>
+            </li>
             <li><a href="<c:url value="/login"/>">Login</a></li>
         </ul>
     </div>

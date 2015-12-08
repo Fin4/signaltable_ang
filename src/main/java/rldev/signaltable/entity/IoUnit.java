@@ -49,7 +49,6 @@ public abstract class IoUnit implements Persistent {
 
     public void setProcessControlObject(ProcessControlObject processControlObject) {
         this.processControlObject = processControlObject;
-        //symbol = processControlObject.getSymbol() + "_" + symbol;
     }
 
     protected IoUnit() {}

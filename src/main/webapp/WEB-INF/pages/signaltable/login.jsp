@@ -1,9 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored ="false" %>
+<%@ page session="true"%>
 <html>
 <head>
   <title>Login Page</title>
   <style>
+
+    body {
+      background-color: #eee;
+    }
     .error {
       padding: 15px;
       margin-bottom: 20px;
@@ -31,14 +36,11 @@
       background: #fff;
       -webkit-border-radius: 2px;
       -moz-border-radius: 2px;
-      border: 1px solid #000;
+      border: 1px solid #00f;
     }
   </style>
 </head>
 <body onload='document.loginForm.username.focus();'>
-
-<h1>Login page</h1>
-
 <div id="login-box">
 
   <h2>Login please</h2>
@@ -50,16 +52,13 @@
     <div class="msg">${msg}</div>
   </c:if>
 
-  <form name='loginForm'
-        action="<c:url value='j_spring_security_check' />" method='POST'>
-    <table>
+  <form name='loginForm' action="<c:url value='/login' />" method='POST'>
+    <table align="center">
       <tr>
-        <td>User:</td>
-        <td><input type='text' name='username' value=''></td>
+        <td><input type='text' name='username' value='' placeholder="Username"></td>
       </tr>
       <tr>
-        <td>Password:</td>
-        <td><input type='password' name='password' /></td>
+        <td><input type='password' name='password' placeholder="Password"/></td>
       </tr>
       <tr>
         <td colspan='2'>
@@ -67,10 +66,8 @@
         </td>
       </tr>
     </table>
-    <input type="hidden"
-           name="${_csrf.parameterName}" value="${_csrf.token}" />
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
   </form>
 </div>
-
 </body>
 </html>
