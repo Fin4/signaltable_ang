@@ -1,0 +1,25 @@
+.table-fixed {
+    height: 80%;
+    width: 90%;
+}
+.table-fixed thead {
+    width: 97%;
+}
+.table-fixed tbody {
+    height: 90%;
+    overflow-y: auto;
+    width: 100%;
+}
+.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+    display: block;
+}
+.table-fixed tbody td, .table-fixed thead > tr> th {
+    float: left;
+    border-bottom-width: 0;
+}
+#iotable {
+    width: 100%;
+    height: auto;
+    position: inherit;
+    margin: 0;
+}
