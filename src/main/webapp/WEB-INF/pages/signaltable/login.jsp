@@ -41,6 +41,7 @@
   </style>
 </head>
 <body onload='document.loginForm.username.focus();'>
+<div><%@include file="menu.jsp"%></div>
 <div id="login-box">
 
   <h2>Login please</h2>

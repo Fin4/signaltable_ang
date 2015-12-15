@@ -30,7 +30,7 @@ public class ProcessControlObjectController {
     }
 
     /* ************************************************************Download excel************************************************************ */
-    @RequestMapping(value = "/{objName}-downloadExcel", method = RequestMethod.GET)
+    @RequestMapping(value = "/{objName}_signals.xls", method = RequestMethod.GET)
     public ModelAndView downloadExcel(@PathVariable String objName) {
 
         ProcessControlObject processControlObject = processControlObjectService.getByName(objName);
@@ -40,6 +40,6 @@ public class ProcessControlObjectController {
         processControlObject.setDigitalOutputs(digitalOutputService.getByProcessControlObjectName(objName));
         processControlObject.setAnalogOutputs(analogOutputService.getByProcessControlObjectName(objName));
 
-        return new ModelAndView("excelView", "ProcessControlObject", processControlObject);
+        return new ModelAndView("excelView", "processControlObject", processControlObject);
     }
 }

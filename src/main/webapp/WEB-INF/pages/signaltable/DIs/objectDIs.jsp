@@ -1,47 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>SignalTable - ${processControlObject.name} - DIs</title>
-    <style>
 
-        .table-fixed {
-            height: 80%;
-        }
+    <spring:url value="/resources/css/iotable.css" var="iotableCss" />
 
-        .table-fixed thead {
-            width: 97%;
-        }
-        .table-fixed tbody {
-            height: 80%;
-            overflow-y: auto;
-            width: 100%;
-        }
-        .table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
-            display: block;
-        }
-        .table-fixed tbody td, .table-fixed thead > tr> th {
-            float: left;
-            border-bottom-width: 0;
-        }
-
-        #menu {
-            width: 100%;
-            height: auto;
-            position: inherit;
-            top: 0;
-            left: 0;
-            font-size: 16px;
-        }
-        #iotable {
-            width: 100%;
-            height: auto;
-            position: inherit;
-            margin: 0;
-        }
-
-    </style>
+    <link href="${iotableCss}" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
@@ -50,12 +17,13 @@
 
 </head>
 <body>
-<div id="menu"><%@include file="../menu.jsp"%></div>
+<div><%@include file="../menu.jsp"%></div>
 <div id="iotable" class="container">
     <div class="row">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <ul class="nav nav-pills">
+                <div id="navbarCollapse" class="collapse navbar-collapse">
+                <ul class="nav nav-pills navbar-left">
                     <li>
                         <a>${processControlObject.name}</a>
                     </li>
@@ -71,20 +39,18 @@
                     <li>
                         <a href="<c:url value='/${processControlObject.name}/ao'/>">AO</a>
                     </li>
-                    <li role="presentation" class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            Action <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="<c:url value='/${processControlObject.name}-downloadExcel'/>">excel</a> <span class="divider">/</span></li>
-                            <sec:authorize access="hasRole('ROLE_ADMIN')">
-                                <li><a href="<c:url value='/${processControlObject.name}/di/new'/>">new</a></li>
-                            </sec:authorize>
-                        </ul>
+                </ul>
+                <ul class="nav nav-pills navbar-right">
+                    <%--<sec:authorize access="hasRole('ROLE_ADMIN')">--%>
+                        <li><a href="<c:url value='/${processControlObject.name}/di/new'/>">new</a></li>
+                    <%--</sec:authorize>--%>
+                    <li>
+                        <a href="<c:url value='/${processControlObject.name}_signals.xls'/>">excel</a>
                     </li>
                 </ul>
+                </div>
             </div>
-            <table class="table table-fixed table-condensed">
+            <table class="table table-fixed">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -95,18 +61,17 @@
                 <tbody>
                 <c:forEach items="${digitalInputs}" var="digitalInput">
                     <tr>
-                        <td>
-                            ${digitalInput.id}
-                            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                        <td>${digitalInput.id}
+<%--                            <sec:authorize access="hasRole('ROLE_ADMIN')">--%>
                                 <a href="<c:url value='/${processControlObject.name}/di/${digitalInput.id}-edit'/>"
                                    class="btn btn-link btn-xs" role="button">edit</a>
                                 <c:url var="deleteURL" value='/${processControlObject.name}/di/${digitalInput.id}-delete'/>
                                 <form action="${deleteURL}" method="POST">
                                     <input id="digitalInput" name="digitalInput" type="hidden" value="${digitalInput.id}"/>
-                                    <input class="btn btn-link btn-xs" type="submit" value="delete" onClick="return confirm('Delete Element?')"/>
+                                    <input class="btn btn-link btn-xs" type="submit" value="delete" onClick="return confirm('Delete ${digitalInput.symbol} Element?')"/>
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                 </form>
-                            </sec:authorize>
+<%--                            </sec:authorize>--%>
                         </td>
                         <td>${digitalInput.symbol}</td>
                         <td>${digitalInput.description}</td>

@@ -1,4 +1,4 @@
-package rldev.signaltable.service;
+package rldev.signaltable.service.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

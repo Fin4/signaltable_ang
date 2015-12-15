@@ -1,5 +1,6 @@
 package rldev.signaltable;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import rldev.signaltable.service.*;
 @ContextConfiguration(classes = AppConfig.class)
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
-public class FillingDatabaseTest {
+public class FillingDatabaseTests {
 
     @Autowired DepartmentService departmentService;
     @Autowired ProcessControlObjectService processControlObjectService;
@@ -24,6 +25,7 @@ public class FillingDatabaseTest {
     @Autowired AnalogOutputService analogOutputService;
 
     @Rollback(value = false)
+    @Ignore
     @Test public void fill1(){
 
         Department department = new Department();

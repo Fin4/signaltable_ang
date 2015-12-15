@@ -1,6 +1,7 @@
 package rldev.signaltable.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import rldev.signaltable.dao.AnalogOutputDao;
@@ -14,6 +15,7 @@ public class AnalogOutputServiceImpl implements AnalogOutputService {
 
     @Autowired
     private AnalogOutputDao analogOutputDao;
+
 
     public void save(AnalogOutput persistent) {
         analogOutputDao.save(persistent);

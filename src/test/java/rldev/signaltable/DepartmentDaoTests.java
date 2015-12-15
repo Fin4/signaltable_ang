@@ -8,21 +8,18 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import rldev.signaltable.configuration.AppConfig;
-import rldev.signaltable.dao.ProcessControlObjectDao;
-
-import java.util.List;
+import rldev.signaltable.dao.DepartmentDao;
 
 @ContextConfiguration(classes = AppConfig.class)
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
-public class ProcessControlObjectTest {
+public class DepartmentDaoTests {
 
-    @Autowired private ProcessControlObjectDao processControlObjectDao;
+    @Autowired private DepartmentDao departmentDao;
 
     @Ignore
     @Test
-    public void findByDepartmentName() {
-        List objs = processControlObjectDao.getByDepartmentName("Sugar");
-        System.out.println(objs);
+    public void findByName() {
+        departmentDao.getByName("Sugar");
     }
 }
