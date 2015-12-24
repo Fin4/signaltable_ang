@@ -1,0 +1,18 @@
+<form method="POST" modelAttribute="digitalInput">
+    <h2>adding new DI to {{digitalInput.processControlObject.name}}</h2>
+    <table>
+        <tr>
+            <td><label for="symbol">Symbol: </label> </td>
+            <td><input path="symbol" id="symbol"/></td>
+        </tr>
+
+        <tr>
+            <td><label for="description">Description: </label> </td>
+            <td><input path="description" id="description"/></td>
+        </tr>
+
+        <tr>
+            <td colspan="3"><input type="submit" value="add"/></td>
+        </tr>
+    </table>
+</form>

@@ -17,7 +17,7 @@
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>
-                rldev.signaltable.configuration.AppConfig
+                rl.signaltable
             </param-value>
         </init-param>
     </servlet>
@@ -59,7 +59,7 @@
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>rldev.signaltable.configuration</param-value>
+        <param-value>rl.signaltable</param-value>
     </context-param>
 
 </web-app>
