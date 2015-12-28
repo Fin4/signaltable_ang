@@ -8,8 +8,7 @@ import rl.signaltable.core.entity.DigitalInput;
 
 import java.util.List;
 
-@Repository("digitalInputDao")
-@Transactional
+@Repository
 public class DigitalInputDaoImpl extends AbstractDao<DigitalInput> implements DigitalInputDao {
 
 

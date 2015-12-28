@@ -7,8 +7,7 @@ import rl.signaltable.core.entity.User;
 
 import java.util.List;
 
-@Repository("userDao")
-@Transactional
+@Repository
 public class UserDaoImpl extends AbstractDao<User> implements UserDao {
 
     public void save(User persistent) {

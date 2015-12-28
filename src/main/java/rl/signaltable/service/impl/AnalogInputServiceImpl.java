@@ -2,13 +2,15 @@ package rl.signaltable.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import rl.signaltable.core.dao.AnalogInputDao;
 import rl.signaltable.core.entity.AnalogInput;
 import rl.signaltable.service.AnalogInputService;
 
 import java.util.List;
 
-@Service("analogInputService")
+@Service
+@Transactional
 public class AnalogInputServiceImpl implements AnalogInputService {
 
     @Autowired

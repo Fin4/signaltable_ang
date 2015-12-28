@@ -22,19 +22,24 @@ public class DigitalInputDaoTests {
     @Ignore
     @Test
     public void getDigitalInputById() {
-        DigitalInput digitalInput = digitalInputDao.getById((long) 56);
+        DigitalInput digitalInput = digitalInputDao.getById(56L);
         System.out.println(digitalInput);
         System.out.println(digitalInput.getProcessControlObject().getDepartment());
     }
 
-
     @Test
     public void getDigitalInputsByPcObjectId() {
-        System.out.println(digitalInputDao.getByPcObjectId((long) 4));
+        System.out.println(digitalInputDao.getByPcObjectId(4L));
     }
 
     @Test
     public void getDigitalInputsByPcObjectName() {
         System.out.println(digitalInputDao.getByPcObjectName("TestPcObject"));
+    }
+
+    @Test
+    public void getDiPcObjectbyDiId() {
+        DigitalInput digitalInput = digitalInputDao.getById(2l);
+        System.out.println(digitalInput.getProcessControlObject());
     }
 }

@@ -2,13 +2,15 @@ package rl.signaltable.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import rl.signaltable.core.dao.DepartmentDao;
 import rl.signaltable.service.DepartmentService;
 import rl.signaltable.core.entity.Department;
 
 import java.util.List;
 
-@Service("departmentService")
+@Service
+@Transactional
 public class DepartmentServiceImpl implements DepartmentService {
 
     @Autowired private DepartmentDao departmentDao;

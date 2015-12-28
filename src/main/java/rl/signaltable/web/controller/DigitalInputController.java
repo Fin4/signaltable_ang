@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import rl.signaltable.core.entity.DigitalInput;
+import rl.signaltable.core.entity.IoUnit;
 import rl.signaltable.service.DigitalInputService;
 import rl.signaltable.core.entity.ProcessControlObject;
 import rl.signaltable.service.ProcessControlObjectService;
@@ -20,10 +21,10 @@ public class DigitalInputController {
     ProcessControlObjectService processControlObjectService;
 
     @RequestMapping(value = {"/{objName}/di{diId}"}, method = RequestMethod.GET)
-    public Object getDigitalInput(@RequestBody DigitalInput digitalInput, @PathVariable String objName, @PathVariable Long diId) {
+    public Object getDigitalInput(@PathVariable String objName, @PathVariable Long diId) {
+        DigitalInput digitalInput = digitalInputService.getById(diId);
         ProcessControlObject processControlObject = processControlObjectService.getByName(objName);
         digitalInput.setProcessControlObject(processControlObject);
-        digitalInputService.update(digitalInput);
         return digitalInput;
     }
 
@@ -31,12 +32,12 @@ public class DigitalInputController {
      * create new digital input
      */
     @RequestMapping(value = {"/{objName}/di/new"}, method = RequestMethod.POST)
-    public Object createDigitalInput(@PathVariable String objName) {
+    public Object createDigitalInput(@RequestBody DigitalInput digitalInput, @PathVariable String objName) {
         ProcessControlObject processControlObject = processControlObjectService.getByName(objName);
-        DigitalInput digitalInput = new DigitalInput();
+
         digitalInput.setProcessControlObject(processControlObject);
         digitalInputService.save(digitalInput);
-        return digitalInput;
+        return "created";
     }
 
     @RequestMapping(value = {"/{objName}/di{diId}"}, method = RequestMethod.POST)

@@ -1,5 +1,8 @@
 package rl.signaltable.core.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,12 +15,13 @@ public class ProcessControlObject {
     private String name;
     private String description;
 
+    @JsonIgnoreProperties({"description"})
     private Department department;
 
-    private List<DigitalInput> digitalInputs;
-    private List<AnalogInput> analogInputs;
-    private List<DigitalOutput> digitalOutputs;
-    private List<AnalogOutput> analogOutputs;
+    @JsonIgnore private List<DigitalInput> digitalInputs;
+    @JsonIgnore private List<AnalogInput> analogInputs;
+    @JsonIgnore private List<DigitalOutput> digitalOutputs;
+    @JsonIgnore private List<AnalogOutput> analogOutputs;
 
     @Id
     @GeneratedValue

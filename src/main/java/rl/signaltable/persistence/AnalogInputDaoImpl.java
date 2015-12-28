@@ -8,8 +8,7 @@ import rl.signaltable.core.entity.AnalogInput;
 
 import java.util.List;
 
-@Repository("analogInputDao")
-@Transactional
+@Repository
 public class AnalogInputDaoImpl extends AbstractDao<AnalogInput> implements AnalogInputDao {
 
     public void delete(AnalogInput persistent) {

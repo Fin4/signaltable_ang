@@ -12,7 +12,7 @@ public abstract class IoUnit {
     protected String symbol;
     protected String description;
 
-    @JsonIgnore
+    @JsonIgnore/*Properties({"name", "description"})*/
     protected ProcessControlObject processControlObject;
 
     @Id

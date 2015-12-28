@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -11,6 +12,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import rl.signaltable.configuration.AppConfig;
+import rl.signaltable.service.DigitalInputService;
 import rl.signaltable.web.controller.MainController;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -21,6 +23,9 @@ public class MainControllerTests {
 
     @InjectMocks
     private MainController controller;
+
+    @Mock
+    private DigitalInputService digitalInputService;
 
     private MockMvc mockMvc;
 

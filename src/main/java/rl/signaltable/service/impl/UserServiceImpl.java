@@ -2,13 +2,15 @@ package rl.signaltable.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import rl.signaltable.service.UserService;
 import rl.signaltable.core.dao.UserDao;
 import rl.signaltable.core.entity.User;
 
 import java.util.List;
 
-@Service("userService")
+@Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
     @Autowired private UserDao userDao;

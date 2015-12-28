@@ -8,8 +8,7 @@ import rl.signaltable.core.entity.DigitalOutput;
 
 import java.util.List;
 
-@Repository("digitalOutputDao")
-@Transactional
+@Repository
 public class DigitalOutputDaoImpl extends AbstractDao<DigitalOutput> implements DigitalOutputDao {
 
     public void save(DigitalOutput persistent) {

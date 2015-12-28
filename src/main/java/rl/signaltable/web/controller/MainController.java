@@ -17,9 +17,15 @@ public class MainController {
     private DigitalInputService digitalInputService;
 
     @RequestMapping(value = {"/"}, method = RequestMethod.GET)
-    public @ResponseBody List<DigitalInput> youAreWelcome() {
+    public @ResponseBody DigitalInput youAreWelcome() {
 
-        List<DigitalInput> digitalInputs = digitalInputService.getByProcessControlObjectId((long) 4);
-        return digitalInputs;
+        DigitalInput digitalInput = digitalInputService.getById(2L);
+        return digitalInput;
     }
+
+    public MainController(DigitalInputService digitalInputService) {
+        this.digitalInputService = digitalInputService;
+    }
+
+    public MainController() {}
 }

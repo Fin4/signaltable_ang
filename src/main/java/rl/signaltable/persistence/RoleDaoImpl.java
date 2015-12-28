@@ -7,8 +7,7 @@ import rl.signaltable.core.dao.RoleDao;
 
 import java.util.List;
 
-@Repository("roleDao")
-@Transactional
+@Repository
 public class RoleDaoImpl extends AbstractDao<Role> implements RoleDao {
 
     @SuppressWarnings("unchecked")

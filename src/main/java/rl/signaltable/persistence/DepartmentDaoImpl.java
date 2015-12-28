@@ -8,8 +8,7 @@ import rl.signaltable.core.entity.Department;
 
 import java.util.List;
 
-@Repository("departmentDao")
-@Transactional
+@Repository
 public class DepartmentDaoImpl extends AbstractDao<Department> implements DepartmentDao {
     
     public void delete(Department persistent) {

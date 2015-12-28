@@ -43,7 +43,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .logout()
-                .permitAll().and().csrf();
+                .permitAll().and().csrf().disable();
     }
 
     @Bean(name = "authenticationManager")

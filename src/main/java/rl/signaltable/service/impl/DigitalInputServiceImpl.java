@@ -4,34 +4,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
+import org.springframework.transaction.annotation.Transactional;
 import rl.signaltable.core.dao.DigitalInputDao;
 import rl.signaltable.core.entity.DigitalInput;
 import rl.signaltable.service.DigitalInputService;
 
 import java.util.List;
 
-@Service("digitalInputService")
+@Service
+@Transactional
 public class DigitalInputServiceImpl implements DigitalInputService {
 
     @Autowired
     private DigitalInputDao digitalInputDao;
 
-    @PreAuthorize("hasPermission(#di, '')")
+    //@PreAuthorize("hasPermission(#di, '')")
     public void save(DigitalInput di) {
         digitalInputDao.save(di);
     }
 
-    @PreAuthorize("hasRole('EMPLOYEE')")
+    //@PreAuthorize("hasRole('EMPLOYEE')")
     public void update(DigitalInput di) {
         digitalInputDao.update(di);
     }
 
-    @PreAuthorize("hasRole('#di.processControlObject.department.name')")
+    //@PreAuthorize("hasRole('#di.processControlObject.department.name')")
     public void deleteById(Long id) {
         digitalInputDao.deleteById(id);
     }
 
-    @PreAuthorize("hasRole('#di.processControlObject.department.name')")
+    //@PreAuthorize("hasRole('#di.processControlObject.department.name')")
     public void delete(DigitalInput di) {
         digitalInputDao.delete(di);
     }

@@ -8,8 +8,7 @@ import rl.signaltable.core.entity.ProcessControlObject;
 
 import java.util.List;
 
-@Repository("processControlObjectDao")
-@Transactional
+@Repository
 public class ProcessControlObjectDaoImpl extends AbstractDao<ProcessControlObject> implements ProcessControlObjectDao {
 
     public void save(ProcessControlObject persistent) {
