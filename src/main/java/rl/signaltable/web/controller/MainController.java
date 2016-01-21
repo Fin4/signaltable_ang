@@ -1,6 +1,9 @@
 package rl.signaltable.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,10 +20,10 @@ public class MainController {
     private DigitalInputService digitalInputService;
 
     @RequestMapping(value = {"/"}, method = RequestMethod.GET)
-    public @ResponseBody DigitalInput youAreWelcome() {
+    public @ResponseBody Object youAreWelcome() {
 
-        DigitalInput digitalInput = digitalInputService.getById(2L);
-        return digitalInput;
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return "you are welcome " + authentication.getName();
     }
 
     public MainController(DigitalInputService digitalInputService) {
